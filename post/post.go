@@ -1,10 +1,10 @@
 package post
 
 import (
-	//"bytes"
+	"bytes"
 	"encoding/json"
 	"fmt"
-	//"net/http"
+	"net/http"
 )
 
 type Check struct {
@@ -29,17 +29,15 @@ func RegisterService(registration *Registration, consul string) {
 	data, _ := json.Marshal(registration)
 	fmt.Printf("    content: \"%s\"\n", string(data))
 
-	/*
-		req, err := http.NewRequest("PUT", url, bytes.NewBuffer(data))
-		req.Header.Set("Content-Type", "application/json")
+	req, err := http.NewRequest("PUT", url, bytes.NewBuffer(data))
+	req.Header.Set("Content-Type", "application/json")
 
-		client := &http.Client{}
-		resp, err := client.Do(req)
-		if err != nil {
-			panic(err)
-		}
-		defer resp.Body.Close()
-		fmt.Println("    Response Status:", resp.Status)
-	*/
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	fmt.Println("    Response Status:", resp.Status)
 
 }

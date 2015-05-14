@@ -25,7 +25,7 @@ func FindAddress(containerName string) string {
 			continue
 		}
 		if strings.Contains(line, containerName) {
-			parts := strings.Split(line, " ")
+			parts := strings.Fields(line)
 			return parts[0]
 		}
 	}

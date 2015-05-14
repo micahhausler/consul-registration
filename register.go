@@ -71,8 +71,7 @@ func main() {
 	for {
 		sleepTime := time.Duration(*sleepPtr) * time.Second
 		fmt.Printf("sleeping %v seconds\n", sleepTime)
-		post.RegisterService(&registration, *consulAddrPtr)
-
 		time.Sleep(sleepTime)
+		post.RegisterService(&registration, *consulAddrPtr)
 	}
 }
