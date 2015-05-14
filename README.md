@@ -8,7 +8,7 @@ This is mainly meant for use as a docker container sidekick to a primary service
 ```
 docker run -d --name webapp organization/webapp 
 docker run --link webapp:webapp micahhausler/consul-registration \
-	-consul consul.example.com \
+	-consul http://consul.example.com \
 	-container webapp \
 	-id webapp1 \
 	-name webapp \
@@ -21,17 +21,18 @@ For help output: just run with `-h`
 ```
 $ docker run micahhausler/consul-registration -h
 Usage of /bin/consul-registration:
-  -consul="consul.service.consul": The address or IP for consul
+  -consul="http://consul.service.consul": The address or IP for consul
   -container="": The container name to watch
   -http="": See https://www.consul.io/docs/agent/checks.html
   -id="": The service ID for consul
-  -interval=0: Interval for consul's HTTP check
+  -interval="45s": Interval for consul's HTTP check
   -name="": The service name for consul
-  -once=false: Only register the service once, then exit
+  -note="": A note to pass along with service checks
+  -once=false: Only register the service, then exit
   -script="": Script on consul server to execute
   -sleep=30: How long to wait between checking in with consul.
   -tag=[]: A tag to be applied to the service. Repeat option for multiple tags
-  -ttl=45: TTL for the service. Make this larget than -sleep
+  -ttl="45s": TTL for the service. Make this larget than -sleep
 ```
 
 
